@@ -1,0 +1,16 @@
+/* src/index.css */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 2rem;
+  background-color: #f4f4f4;
+}
+
+.app {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

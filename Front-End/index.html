@@ -1,41 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cleanify - Report Waste</title>
-</head>
-<body>
-  <h1>Report Waste</h1>
-  <form id="reportForm">
-    <input type="text" id="title" placeholder="Title" required /><br />
-    <textarea id="description" placeholder="Description" required></textarea><br />
-    <input type="text" id="location" placeholder="Location" required /><br />
-    <input type="text" id="imageUrl" placeholder="Image URL" /><br />
-    <button type="submit">Submit</button>
-  </form>
-
-  <script>
-    document.getElementById('reportForm').addEventListener('submit', async function (e) {
-      e.preventDefault();
-      
-      const data = {
-        title: document.getElementById('title').value,
-        description: document.getElementById('description').value,
-        location: document.getElementById('location').value,
-        imageUrl: document.getElementById('imageUrl').value
-      };
-
-      const res = await fetch('http://localhost:5000/api/reports', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-
-      const result = await res.json();
-      alert("✅ Report submitted!");
-      console.log(result);
-    });
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
