@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 function SubmitReportPage() {
   const [title, setTitle] = useState("");
@@ -10,37 +11,32 @@ function SubmitReportPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Get token from localStorage (user must be logged in)
     const token = localStorage.getItem("token");
 
     if (!token) {
-      setMessage("You must be logged in to sumbit a report");
+      setMessage("You must be logged in to submit a report");
       return;
     }
 
     try {
-      const response = await fetch("http://localhost:5000/reports", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ title, description, location, imageUrl }),
-      });
+      await axios.post(
+        "http://localhost:5000/reports",
+        { title, description, location, imageUrl },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-      if (response.ok) {
-        setMessage("Report Submitted Successfully");
-        setTitle("");
-        setDescription("");
-        setLocation("");
-        setImageUrl("");
-      } else {
-        const data = await response.json();
-
-        setMessage(data.message || "failed to submit report");
-      }
-    } catch (error) {
-      setMessage("Error:" + error.message);
+      setMessage("Report Submitted successfully!");
+      setTitle("");
+      setDescription("");
+      setLocation("");
+      setImageUrl("");
+    } catch (err) {
+      setMessage(err.response?.data?.message || "Submission failed");
     }
   };
 
