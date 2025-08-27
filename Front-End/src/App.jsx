@@ -6,6 +6,7 @@ import SubmitReportPage from "./pages/SubmitReportPage";
 import ViewReportPage from "./pages/ViewReportsPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import PrivateRoute from "./components/PrivateRouter";
 
 function App() {
   return (
@@ -18,6 +19,22 @@ function App() {
           <Route path="/reports" element={<ViewReportPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route
+            path="submit-report"
+            element={
+              <PrivateRoute>
+                <SubmitReportPage></SubmitReportPage>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/reports"
+            element={
+              <PrivateRoute>
+                <ReportsPage />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </div>
     </div>
