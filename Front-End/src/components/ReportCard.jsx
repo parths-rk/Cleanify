@@ -1,21 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import styles from "./ReportCard.module.css";
 
-function Navbar() {
+function ReportCard({ report }) {
   return (
-    <nav className="bg-green-600 text-whote p4 flex justify-between">
-      <div className="front-bold text-xl">
-        <link to="/"></link>
-      </div>
-      <div className="space-x-4">
-        <Link to="/">Home</Link>
-        <Link to="/submit">Submit Report</Link>
-        <Link to="/reports">View Reports</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
-      </div>
-    </nav>
+    <div className={styles.card}>
+      <h3 className={styles.cardTitle}>{report.title}</h3>
+      <p className={styles.cardText}>{report.description}</p>
+      <p className={styles.cardText}><strong>Location:</strong> {report.location}</p>
+      {report.imageUrl && (
+        <img
+          src={report.imageUrl}
+          alt={report.title}
+          className={styles.cardImage}
+        />
+      )}
+    </div>
   );
 }
 
-export default Navbar;
+export default ReportCard;

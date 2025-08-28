@@ -1,0 +1,29 @@
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cardTitle {
+  font-weight: 600;
+  color: #16a34a;
+  font-size: 18px;
+}
+
+.cardText {
+  font-size: 14px;
+  color: #374151;
+}
+
+.cardImage {
+  width: 100%;
+  border-radius: 6px;
+  margin-top: 8px;
+  object-fit: cover;
+}
