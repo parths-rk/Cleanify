@@ -1,9 +1,9 @@
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 
 function RegisterPage() {
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -14,8 +14,8 @@ function RegisterPage() {
     e.preventDefault();
 
     try {
-        await axios.post("http://localhost:5000/api/users/register", {
-        username,
+      await axios.post("http://localhost:5000/api/users/register", {
+        name,
         email,
         password,
       });
@@ -26,7 +26,6 @@ function RegisterPage() {
       setMessage(err.response?.data?.message || "Registration failed");
     }
   };
-  
 
   return (
     <div className="p-6 max-w-md mx-auto">
@@ -36,9 +35,9 @@ function RegisterPage() {
       <form onSubmit={handleRegister} className="flex flex-col gap-3">
         <input
           type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           className="border p-2 rounded"
         />
 

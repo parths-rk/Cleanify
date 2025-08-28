@@ -20,7 +20,7 @@ function SubmitReportPage() {
 
     try {
       await axios.post(
-        "http://localhost:5000/reports",
+        "http://localhost:5000/api/reports",
         { title, description, location, imageUrl },
         {
           headers: {

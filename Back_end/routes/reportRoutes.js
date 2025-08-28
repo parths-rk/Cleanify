@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const Report = require("../models/Report"); // your model
-const { protect } = require("../middleware/authMiddleware"); //Auth MiddleWare
+const Report = require("../models/Report");
+const { protect } = require("../middleware/authMiddleware");
+
 // POST: Submit a new report
 router.post("/", protect, async (req, res) => {
   try {
@@ -12,6 +13,7 @@ router.post("/", protect, async (req, res) => {
       description,
       location,
       imageUrl,
+      user: req.user.id, // attach user from JWT
     });
 
     const savedReport = await newReport.save();
@@ -26,7 +28,7 @@ router.post("/", protect, async (req, res) => {
 // GET: Fetch all reports
 router.get("/", async (req, res) => {
   try {
-    const reports = await Report.find().populate("User", "name email");
+    const reports = await Report.find().populate("user", "name email");
     res.status(200).json(reports);
   } catch (error) {
     res.status(500).json({ error: "❌ Failed to fetch reports" });

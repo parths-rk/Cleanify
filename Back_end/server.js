@@ -1,11 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 require("dotenv").config();
 
 const app = express(); // initialize express
 const PORT = process.env.PORT || 5000; // default to port 5000
 
 app.use(express.json()); // parse JSON
+app.use(cors({
+  origin: "http://localhost:5173", // your frontend URL
+  credentials: true,
+}));
+
 
 // MongoDB Connection
 mongoose
@@ -24,7 +30,6 @@ app.use("/api/reports", reportRoutes);
 //Using User Routes
 
 const userRoutes = require("./routes/userRoutes");
-app.use("/api/reports", reportRoutes);
 app.use("/api/users", userRoutes);
 
 // Test route
