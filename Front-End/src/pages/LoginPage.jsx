@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import styles from "./LoginPage.module.css";
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -26,28 +26,30 @@ function LoginPage() {
   };
 
   return (
-    <div className="p-6 max-w-md mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Login</h2>
-      {message && <p className="text-red-600 mb-2">{message}</p>}
-      <form onSubmit={handleLogin} className="flex flex-col gap-3">
+    <div className={styles.container}>
+      <div className={styles.formBox}>
+      <h2 className={styles.title}>Login</h2>
+      {message && <p className={styles.message}>{message}</p>}
+      <form onSubmit={handleLogin} className={styles.form}>
         <input
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border p-2 rounded"
+          className={styles.inputField}
         />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border p-2 rounded"
+          className={styles.inputField}
         />
-        <button type="submit" className="bg-blue-600 text-white p-2 rounded">
+        <button type="submit" className={styles.submitBtn}>
           Login
         </button>
       </form>
+      </div>
     </div>
   );
 }

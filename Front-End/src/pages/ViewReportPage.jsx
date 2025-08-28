@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import styles from "./ViewReportPage.module.css";
 
 function ViewReportPage() {
   const [reports, setReports] = useState([]);
@@ -11,22 +12,30 @@ function ViewReportPage() {
         const res = await axios.get("http://localhost:5000/api/reports");
         setReports(res.data);
       } catch (err) {
-        setMessage(err.response?.data?.message || "Failed to fetch reports");
+        setMessage(err.response?.data?.error || "Failed to fetch reports");
       }
     };
     fetchReports();
   }, []);
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Community Reports</h2>
-      {message && <p className="mb-3 text-red-600">{message}</p>}
-      <ul className="space-y-4">
+    <div className={styles.container}>
+      <h2 className={styles.title}>Community Reports</h2>
+      {message && <p className={styles.message}>{message}</p>}
+      <ul className={styles.cardContainer}>
+        {reports.length === 0 && !message && <p>No reports yet.</p>}
         {reports.map((report) => (
-          <li key={report.id} className="border p-3 rounded shadow">
-            <h3 className="font-semibold">{report.title}</h3>
+          <li key={report._id} className={styles.card}>
+            <h3>{report.title}</h3>
             <p>{report.description}</p>
-            <p className="text-sm text-gray-600">📍 {report.location}</p>
+            <p>📍 {report.location}</p>
+            {report.imageUrl && (
+              <img
+                src={report.imageUrl}
+                alt={report.title}
+                style={{ width: "100%", borderRadius: "6px", marginTop: "8px" }}
+              />
+            )}
           </li>
         ))}
       </ul>

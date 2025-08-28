@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
+  background-color: #f3f4f6;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #22c55e;
+  margin-bottom: 16px;
+}
+
+.message {
+  color: #ef4444;
+  text-align: center;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.cardContainer {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 280px;
+}
+
+.card h3 {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #16a34a;
+}
+
+.card p {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #374151;
+}

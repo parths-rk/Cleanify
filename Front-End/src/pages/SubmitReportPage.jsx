@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import styles from "./SubmitReportPage.module.css";
 function SubmitReportPage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -41,15 +41,18 @@ function SubmitReportPage() {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "auto" }}>
-      <h2>Submit Report</h2>
+    <div className={styles.container}>
+      <div className={styles.formBox}>
+      <h2 className={styles.title}>Submit Report</h2>
+       {message && <p className={styles.message}>{message}</p>}
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <input
           type="text"
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          className={styles.inputField}
         />
 
         <br />
@@ -58,6 +61,7 @@ function SubmitReportPage() {
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          className={styles.inputField}
         ></textarea>
 
         <br />
@@ -67,6 +71,7 @@ function SubmitReportPage() {
           placeholder="Image URL"
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
+          className={styles.inputField}
         />
 
         <br />
@@ -76,11 +81,13 @@ function SubmitReportPage() {
           placeholder="Location"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
+          className={styles.inputField}
         />
 
-        <button type="submit">Submit Report</button>
+        <button type="submit" className={styles.submitBtn}>Submit</button>
       </form>
       {message && <p>{message}</p>}
+      </div>
     </div>
   );
 }

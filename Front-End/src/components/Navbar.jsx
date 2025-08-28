@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styles from "./Navbar.module.css";
 
 function Navbar() {
   // Logout function
@@ -11,28 +12,28 @@ function Navbar() {
   const token = localStorage.getItem("token");
 
   return (
-    <nav className="bg-gray-800 text-white p-4 flex justify-between items-center">
-      <h1 className="font-bold text-xl">Cleanify</h1>
+    <nav className={styles.navbar}>
+      <h1 className={styles.navTitle}>Cleanify</h1>
 
-      <div className="flex gap-4">
-        <Link to="/">Home</Link>
+      <div className={styles.navList}>
+        <Link className={styles.navLink} to="/">Home</Link>
 
         {!token ? (
           <>
-            <Link to="/register">Register</Link>
-            <Link to="/login">Login</Link>
+            <Link className={styles.navLink}to="/register">Register</Link>
+            <Link className={styles.navLink}to="/login">Login</Link>
           </>
         ) : (
           <button
             onClick={handleLogout}
-            className="bg-red-600 px-2 py-1 rounded"
+            className={styles.logoutBtn}
           >
             Logout
           </button>
         )}
 
-        <Link to="/submit-report">Submit Report</Link>
-        <Link to="/reports">Reports</Link>
+        <Link className={styles.navLink} to="/submit-report">Submit Report</Link>
+        <Link className={styles.navLink} to="/reports">Reports</Link>
       </div>
     </nav>
   );

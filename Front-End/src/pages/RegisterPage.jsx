@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
+import styles from "./RegisterPage.module.css";
 
 function RegisterPage() {
   const [name, setName] = useState("");
@@ -28,17 +29,17 @@ function RegisterPage() {
   };
 
   return (
-    <div className="p-6 max-w-md mx-auto">
-      <h2 className="text-2xl font-bold mb-4"> Register</h2>
-      {message && <p className="mb-3 text-red-600">{message}</p>}
+    <div className={styles.container}>
+      <h2 className={styles.formBox}> Register</h2>
+      {message && <p className={styles.title}>{message}</p>}
 
-      <form onSubmit={handleRegister} className="flex flex-col gap-3">
+      <form onSubmit={handleRegister} className={styles.message}>
         <input
           type="text"
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="border p-2 rounded"
+          className={styles.inputField}
         />
 
         <input
@@ -46,7 +47,7 @@ function RegisterPage() {
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="border p-2 rounded"
+          className={styles.inputField}
         />
 
         <input
@@ -54,10 +55,10 @@ function RegisterPage() {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="border p-2 rounded"
+          className={styles.inputField}
         />
 
-        <button type="submit" className="bg-green-600 text-white p-2 rounded">
+        <button type="submit" className={styles.submitBtn}>
           Register
         </button>
       </form>

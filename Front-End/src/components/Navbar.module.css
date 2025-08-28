@@ -1,0 +1,51 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0,0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+     
+}
+.navTitle{
+    color: chartreuse;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navList{
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+.navLink{
+
+    color: beige;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.navLink:hover{
+    color: aquamarine;
+}
+
+.logoutBtn{
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+.logoutBtn:hover{
+    background-color: coral;
+}
