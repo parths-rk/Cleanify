@@ -1,13 +1,38 @@
+/* Container & layout */
 .container {
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* stack heading + form vertically */
   align-items: center;
-  height: 100vh;
-  background-color: grey;
+  justify-content: flex-start; /* heading at top */
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Heading */
+.heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #22c55e;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Message / alerts */
+.title {
+  color: #ef4444;  /* error messages */
+  margin-bottom: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Form box */
 .formBox {
-  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;  /* spacing between inputs and button */
+  background-color: #ffffff;
   padding: 32px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -15,49 +40,51 @@
   max-width: 400px;
 }
 
-.title {
-  font-size: 24px;
-  font-weight: bold;
-  color: green;
-  text-align: center;
-  margin-bottom: 16px;
-}
-.message {
-  color: red;
-  text-align: center;
-  margin-bottom: 12px;
-  font-weight: 500;
-}
-.form{
-    display:flex;
-    flex-direction: column;
-    gap: 12px;
-}
+/* Input fields */
 .inputField {
-  padding: 10px 12px; 
-  border: 1px solid #d1d5db; 
-  border-radius: 4px;
+  padding: 12px 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
   font-size: 16px;
-  transition: border-color 0.2s ease; 
+  transition: all 0.3s ease;
+}
+
+.inputField::placeholder {
+  color: #9ca3af;
 }
 
 .inputField:focus {
-  border-color: #22c55e;
-  outline: none; 
+  border-color: #c58422;
+  outline: none;
+  box-shadow: 0 0 5px rgba(197, 132, 34, 0.5);
 }
+
+/* Submit button */
 .submitBtn {
-  padding: 10px; 
-  background-color: #22c55e; 
-  color: white; 
-  border: none; 
-  border-radius: 4px; 
-  font-weight: 500; 
-  cursor: pointer; 
-  transition: background-color 0.2s ease; 
+  padding: 12px;
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .submitBtn:hover {
-  background-color: #16a34a; 
+  background-color: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
 }
 
+/* Responsive design */
+@media (max-width: 480px) {
+  .formBox {
+    padding: 25px;
+  }
 
+  .heading {
+    font-size: 2rem;
+  }
+}

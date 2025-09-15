@@ -30,7 +30,7 @@ function RegisterPage() {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.formBox}> Register</h2>
+      <h2 className={styles.heading}> Register</h2>
       {message && <p className={styles.title}>{message}</p>}
 
       <form onSubmit={handleRegister} className={styles.message}>
