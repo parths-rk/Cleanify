@@ -1,5 +1,5 @@
 .card {
-  background-color: #ffffff;
+  background-color: #c8d091;
   border-radius: 8px;
   padding: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -12,13 +12,13 @@
 
 .cardTitle {
   font-weight: 600;
-  color: #16a34a;
+  color: #163ea3;
   font-size: 18px;
 }
 
 .cardText {
   font-size: 14px;
-  color: #374151;
+  color: #4de478;
 }
 
 .cardImage {
